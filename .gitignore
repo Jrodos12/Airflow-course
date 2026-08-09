@@ -3,6 +3,7 @@ __pycache__/
 *.py[codz]
 *$py.class
 /Airflow_course
+/Airflow-course
 /airflow/*
 !airflow/dags/
 # C extensions
