@@ -25,8 +25,17 @@ with DAG(
             name VARCHAR(30) NOT NULL,
             age INTEGER NOT NULL,
             is_active BOOL DEFAULT TRUE,
-            created_at TIMESTAMP DEFAUL CURRENT_TIMESTAMP
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
             """,
             conn_id='my_sqlite_conection'
     )
+    delete_table = SQLExecuteQueryOperator(
+        task_id= 'delete_table',
+        sql="""
+            DROP TABLE users
+            """,
+            conn_id='my_sqlite_conection'
+    )
+
+    delete_table >> create_table
